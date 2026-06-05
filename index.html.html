@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grace Trace Ministries — Restoring Lives. Rebuilding Community.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy:     #4A0E1A;
+    --burgundy-mid: #6B1628;
+    --burgundy-light:#8B1E35;
+    --green:        #1A3D2B;
+    --green-mid:    #2D5E42;
+    --green-light:  #3B7A57;
+    --gold:         #C9971C;
+    --gold-light:   #E0B84A;
+    --ivory:        #FAF6EE;
+    --ivory-dark:   #F0E8D8;
+    --black:        #0D0D0D;
+    --charcoal:     #1A1A1A;
+    --gray:         #6B6B6B;
+    --white:        #FFFFFF;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Jost',sans-serif; background:var(--ivory); color:var(--black); overflow-x:hidden; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 60px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(13,13,13,0.97);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,151,28,0.2);
+  }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--white); }
+  .nav-logo span { color:var(--gold); }
+  .nav-links { display:flex; gap:40px; list-style:none; }
+  .nav-links a { font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); text-decoration:none; transition:color 0.3s; }
+  .nav-links a:hover { color:var(--gold); }
+  .nav-cta { background:var(--gold) !important; color:var(--black) !important; padding:10px 24px; font-weight:600 !important; transition:background 0.3s !important; }
+  .nav-cta:hover { background:var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height:100vh; background:var(--black); position:relative;
+    display:flex; align-items:center; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(74,14,26,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 10% 70%, rgba(26,61,43,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 40% at 50% 10%, rgba(201,151,28,0.06) 0%, transparent 50%);
+  }
+  .hero-texture {
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content {
+    position:relative; z-index:2;
+    max-width:1200px; margin:0 auto; padding:120px 60px 80px;
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:80px; align-items:center;
+  }
+  .hero-eyebrow {
+    font-size:11px; font-weight:500; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:12px;
+    animation:fadeUp 0.8s 0.2s both;
+  }
+  .hero-eyebrow::before { content:''; width:40px; height:1px; background:var(--gold); }
+  .hero h1 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(44px,5vw,76px);
+    font-weight:300; color:var(--white); line-height:1.05; margin-bottom:24px;
+    animation:fadeUp 0.8s 0.4s both;
+  }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero-sub {
+    font-size:16px; font-weight:300; line-height:1.9; color:rgba(255,255,255,0.6);
+    margin-bottom:40px; max-width:520px; animation:fadeUp 0.8s 0.6s both;
+  }
+  .hero-actions { display:flex; gap:16px; flex-wrap:wrap; animation:fadeUp 0.8s 0.8s both; }
+  .btn-primary {
+    background:var(--gold); color:var(--black); padding:16px 36px;
+    font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+    text-decoration:none; transition:all 0.3s; display:inline-block; cursor:pointer; border:none;
+  }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); }
+  .btn-outline {
+    border:1px solid rgba(255,255,255,0.25); color:var(--white); padding:16px 36px;
+    font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+    text-decoration:none; transition:all 0.3s; display:inline-block; cursor:pointer; background:transparent;
+    font-family:'Jost',sans-serif;
+  }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+  .hero-right { animation:fadeUp 0.8s 0.5s both; }
+  .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); }
+  .stat { padding:32px 20px; background:rgba(13,13,13,0.7); text-align:center; }
+  .stat-number { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--gold); line-height:1; margin-bottom:8px; }
+  .stat-label { font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .hero-quote {
+    margin-top:32px; padding:28px 28px 28px 32px;
+    border-left:2px solid var(--green-light);
+    background:rgba(26,61,43,0.15);
+  }
+  .hero-quote p { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:rgba(255,255,255,0.75); line-height:1.6; }
+
+  /* MISSION STRIP */
+  .mission-strip { background:var(--green); padding:60px; text-align:center; }
+  .mission-strip p { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,32px); font-style:italic; font-weight:300; color:var(--white); line-height:1.6; max-width:800px; margin:0 auto; }
+  .mission-strip p span { color:var(--gold); }
+
+  /* ABOUT */
+  .about-section { padding:100px 60px; max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .about-text .eyebrow { font-size:11px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .about-text .eyebrow::before { content:''; width:30px; height:1px; background:var(--gold); }
+  .about-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,3.5vw,52px); font-weight:300; color:var(--burgundy); line-height:1.15; margin-bottom:24px; }
+  .about-text h2 em { font-style:italic; color:var(--green-mid); }
+  .about-text p { font-size:15px; font-weight:300; line-height:1.9; color:var(--gray); margin-bottom:16px; }
+  .about-text a { display:inline-block; margin-top:16px; }
+  .about-visual { background:var(--burgundy); padding:48px; position:relative; }
+  .about-visual::before { content:''; position:absolute; top:16px; left:16px; right:-16px; bottom:-16px; background:var(--green); z-index:-1; }
+  .about-visual h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--white); margin-bottom:24px; }
+  .about-value { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+  .about-value-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+  .about-value-text h4 { font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+  .about-value-text p { font-size:13px; font-weight:300; color:rgba(255,255,255,0.65); line-height:1.6; }
+
+  /* PROGRAMS */
+  .programs-wrap { background:var(--ivory-dark); padding:100px 0; }
+  .programs-inner { max-width:1200px; margin:0 auto; padding:0 60px; }
+  .section-header .eyebrow { font-size:11px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .section-header .eyebrow::before { content:''; width:30px; height:1px; background:var(--gold); }
+  .section-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,3.5vw,52px); font-weight:300; color:var(--burgundy); line-height:1.15; margin-bottom:12px; }
+  .section-header h2 em { font-style:italic; color:var(--green-mid); }
+  .section-header p { font-size:15px; font-weight:300; color:var(--gray); max-width:540px; line-height:1.8; }
+  .programs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; margin-top:60px; background:rgba(0,0,0,0.06); }
+  .program-card { background:var(--white); padding:48px 40px; position:relative; overflow:hidden; transition:all 0.4s; cursor:pointer; }
+  .program-card::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:3px; transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
+  .program-card:nth-child(1)::after { background:var(--burgundy-light); }
+  .program-card:nth-child(2)::after { background:var(--green-light); }
+  .program-card:nth-child(3)::after { background:var(--gold); }
+  .program-card:nth-child(4)::after { background:var(--burgundy-mid); }
+  .program-card:hover::after { transform:scaleX(1); }
+  .program-card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(74,14,26,0.1); }
+  .program-num { position:absolute; top:24px; right:32px; font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300; color:rgba(0,0,0,0.04); line-height:1; }
+  .program-icon { font-size:36px; margin-bottom:20px; display:block; }
+  .program-card h3 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--burgundy); margin-bottom:12px; }
+  .program-card p { font-size:14px; font-weight:300; line-height:1.8; color:var(--gray); margin-bottom:20px; }
+  .program-tag { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; display:inline-block; }
+  .tag-burgundy { color:var(--burgundy-light); border:1px solid rgba(107,22,40,0.3); }
+  .tag-green { color:var(--green-mid); border:1px solid rgba(45,94,66,0.3); }
+  .tag-gold { color:var(--gold); border:1px solid rgba(201,151,28,0.3); }
+
+  /* SERVE */
+  .serve-section { background:var(--charcoal); padding:100px 0; }
+  .serve-inner { max-width:1200px; margin:0 auto; padding:0 60px; }
+  .serve-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.04); margin-top:60px; }
+  .serve-item { padding:40px 28px; background:var(--charcoal); text-align:center; border-top:2px solid transparent; transition:border-color 0.3s; }
+  .serve-item:nth-child(1):hover { border-top-color:var(--burgundy-light); }
+  .serve-item:nth-child(2):hover { border-top-color:var(--green-light); }
+  .serve-item:nth-child(3):hover { border-top-color:var(--gold); }
+  .serve-item:nth-child(4):hover { border-top-color:var(--burgundy-mid); }
+  .serve-item .icon { font-size:40px; margin-bottom:16px; display:block; }
+  .serve-item h4 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--white); margin-bottom:10px; }
+  .serve-item p { font-size:13px; font-weight:300; line-height:1.7; color:rgba(255,255,255,0.45); }
+
+  /* IMPACT */
+  .impact-wrap { background:var(--ivory); padding:100px 0; }
+  .impact-inner { max-width:1200px; margin:0 auto; padding:0 60px; }
+  .impact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:60px; }
+  .impact-text h3 { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; color:var(--burgundy); margin-bottom:20px; line-height:1.3; }
+  .impact-text p { font-size:15px; font-weight:300; line-height:1.9; color:var(--gray); margin-bottom:16px; }
+  .impact-numbers { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(0,0,0,0.06); }
+  .impact-num { background:var(--white); padding:36px 28px; }
+  .impact-num .num { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--burgundy); line-height:1; margin-bottom:8px; }
+  .impact-num .num span { color:var(--gold); }
+  .impact-num:nth-child(2) .num { color:var(--green); }
+  .impact-num:nth-child(4) .num { color:var(--green); }
+  .impact-num .lbl { font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--gray); }
+
+  /* INVOLVE */
+  .involve-wrap { background:var(--burgundy); padding:100px 0; }
+  .involve-inner { max-width:1200px; margin:0 auto; padding:0 60px; }
+  .involve-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:60px; background:rgba(255,255,255,0.06); }
+  .involve-card { background:var(--burgundy-mid); padding:48px 36px; text-align:center; transition:all 0.3s; }
+  .involve-card:hover { background:var(--green); }
+  .involve-icon { font-size:44px; margin-bottom:20px; display:block; }
+  .involve-card h3 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--white); margin-bottom:12px; }
+  .involve-card p { font-size:14px; font-weight:300; line-height:1.8; color:rgba(255,255,255,0.6); margin-bottom:24px; }
+  .involve-link { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,151,28,0.3); padding-bottom:2px; cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; font-family:'Jost',sans-serif; }
+
+  /* DONATE BANNER */
+  .donate-banner { background:var(--gold); padding:48px 60px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+  .donate-banner p { font-family:'Cormorant Garamond',serif; font-size:28px; font-style:italic; font-weight:300; color:var(--black); }
+  .donate-banner p strong { font-style:normal; font-weight:700; }
+  .btn-dark { background:var(--black); color:var(--white); padding:16px 40px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all 0.3s; display:inline-block; cursor:pointer; border:none; font-family:'Jost',sans-serif; }
+  .btn-dark:hover { background:var(--burgundy); transform:translateY(-2px); }
+
+  /* CONTACT */
+  .contact-section { background:var(--black); padding:100px 0; }
+  .contact-inner { max-width:1200px; margin:0 auto; padding:0 60px; }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:60px; }
+  .contact-info h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--white); margin-bottom:32px; }
+  .contact-item { display:flex; gap:16px; margin-bottom:28px; align-items:flex-start; }
+  .ci-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+  .ci-text { font-size:14px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.6; }
+  .ci-text strong { display:block; font-weight:500; color:var(--white); margin-bottom:2px; font-size:10px; letter-spacing:2px; text-transform:uppercase; }
+  .ci-text a { color:var(--gold); text-decoration:none; }
+  .contact-form { display:flex; flex-direction:column; gap:16px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { display:flex; flex-direction:column; gap:8px; }
+  .form-group label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .form-group input, .form-group textarea, .form-group select { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:var(--white); padding:14px 16px; font-family:'Jost',sans-serif; font-size:14px; font-weight:300; outline:none; transition:border-color 0.3s; width:100%; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--gold); }
+  .form-group textarea { resize:vertical; min-height:120px; }
+  .form-group select option { background:var(--black); }
+  .form-submit { background:var(--gold); color:var(--black); border:none; padding:16px 40px; font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; align-self:flex-start; }
+  .form-submit:hover { background:var(--gold-light); transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer { background:var(--charcoal); padding:48px 60px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; border-top:1px solid rgba(201,151,28,0.12); }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--white); }
+  .footer-logo span { color:var(--gold); }
+  .footer-links { display:flex; gap:32px; list-style:none; }
+  .footer-links a { font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.3s; }
+  .footer-links a:hover { color:var(--gold); }
+  .footer-copy { font-size:12px; font-weight:300; color:rgba(255,255,255,0.25); }
+
+  /* MODAL */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:200; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.active { display:flex; }
+  .modal { background:var(--ivory); max-width:500px; width:100%; padding:48px; position:relative; animation:fadeUp 0.3s both; }
+  .modal h3 { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; color:var(--burgundy); margin-bottom:12px; }
+  .modal p { font-size:14px; font-weight:300; color:var(--gray); line-height:1.8; margin-bottom:24px; }
+  .modal-close { position:absolute; top:20px; right:20px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--gray); }
+  .modal-close:hover { color:var(--burgundy); }
+  .modal-form { display:flex; flex-direction:column; gap:14px; }
+  .modal-form .form-group label { color:var(--gray); }
+  .modal-form input, .modal-form select, .modal-form textarea { background:var(--white); border:1px solid rgba(0,0,0,0.12); color:var(--black); padding:12px 14px; font-family:'Jost',sans-serif; font-size:14px; outline:none; transition:border-color 0.3s; width:100%; }
+  .modal-form input:focus, .modal-form select:focus, .modal-form textarea:focus { border-color:var(--burgundy); }
+  .modal-form select option { background:var(--white); color:var(--black); }
+  .modal-submit { background:var(--burgundy); color:var(--white); border:none; padding:14px 32px; font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; align-self:flex-start; }
+  .modal-submit:hover { background:var(--green); }
+
+  /* SUCCESS MSG */
+  .success-msg { display:none; text-align:center; padding:40px 0; }
+  .success-msg .s-icon { font-size:60px; display:block; margin-bottom:16px; }
+  .success-msg h4 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--green); margin-bottom:12px; }
+  .success-msg p { font-size:14px; font-weight:300; color:var(--gray); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+  /* RESPONSIVE */
+  @media (max-width:900px) {
+    nav { padding:16px 24px; }
+    .nav-links { display:none; }
+    .hero-content { grid-template-columns:1fr; padding:100px 24px 60px; gap:40px; }
+    .about-section { grid-template-columns:1fr; padding:60px 24px; gap:40px; }
+    .programs-inner, .serve-inner, .impact-inner, .involve-inner, .contact-inner { padding:0 24px; }
+    .programs-grid, .involve-grid { grid-template-columns:1fr; }
+    .serve-grid { grid-template-columns:repeat(2,1fr); }
+    .impact-grid { grid-template-columns:1fr; gap:40px; }
+    .contact-grid { grid-template-columns:1fr; gap:40px; }
+    .form-row { grid-template-columns:1fr; }
+    footer { flex-direction:column; text-align:center; padding:40px 24px; }
+    .donate-banner { padding:32px 24px; flex-direction:column; text-align:center; }
+    .mission-strip { padding:60px 24px; }
+  }
+</style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+    emailjs.init({publicKey: "iClY7Wc2uPuKX6nv7"});
+  })();
+</script>
+</head>
+<body>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-housing">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-housing')">✕</button>
+    <div id="housing-form-wrap">
+      <h3>Request Housing Assistance</h3>
+      <p>Fill out the form below and our team will contact you within 2 business days to discuss available housing options.</p>
+      <div class="modal-form">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" id="h-name"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your phone number" id="h-phone"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" id="h-email"></div>
+        <div class="form-group"><label>Type of Assistance Needed</label>
+          <select id="h-type">
+            <option value="">Select program</option>
+            <option>Veterans Housing</option>
+            <option>Reentry Housing</option>
+            <option>DBMD Residential Care</option>
+            <option>Group Home / Assisted Living</option>
+            <option>Not sure — need guidance</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Brief Description of Your Situation</label><textarea placeholder="Tell us a little about your situation and what you need..." id="h-msg" style="min-height:90px;"></textarea></div>
+        <button class="modal-submit" onclick="submitHousing()">Submit Request</button>
+      </div>
+    </div>
+    <div class="success-msg" id="housing-success">
+      <span class="s-icon">✅</span>
+      <h4>Request Received</h4>
+      <p>Thank you for reaching out. Our team will contact you within 2 business days at the email or phone number you provided.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-donate">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-donate')">✕</button>
+    <h3>Support Our Mission</h3>
+    <p>Your donation provides housing, meals, case management, and hope to individuals rebuilding their lives in Texas. Grace Trace Ministries is a 501(c)(3) nonprofit — your gift is tax deductible.</p>
+    <p style="margin-bottom:8px;">To donate, please contact us directly:</p>
+    <p><strong style="color:var(--burgundy);">📧 info@gracetraceministries.org</strong></p>
+    <br>
+    <p style="font-size:13px; color:var(--gray);">Online donations coming soon. We appreciate your patience as we grow.</p>
+    <br>
+    <button class="modal-submit" onclick="window.location.href='mailto:info@gracetraceministries.org?subject=Donation Inquiry'">Email Us to Donate</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-volunteer">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-volunteer')">✕</button>
+    <div id="vol-form-wrap">
+      <h3>Volunteer With Us</h3>
+      <p>Share your time and skills with our residents. We welcome volunteers for life skills classes, job coaching, mentoring, and more.</p>
+      <div class="modal-form">
+        <div class="form-group"><label>Full Name</label><input type="text" id="v-name" placeholder="Your full name"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="v-email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>How Would You Like to Help?</label>
+          <select id="v-type">
+            <option value="">Select area</option>
+            <option>Life Skills Classes</option>
+            <option>Job Coaching / Resume Help</option>
+            <option>Mentoring</option>
+            <option>Administrative Support</option>
+            <option>Donations / Supplies Drive</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="modal-submit" onclick="submitVolunteer()">Submit Interest</button>
+      </div>
+    </div>
+    <div class="success-msg" id="vol-success">
+      <span class="s-icon">🙏</span>
+      <h4>Thank You!</h4>
+      <p>We appreciate your willingness to serve. We will be in touch soon with next steps.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-partner">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-partner')">✕</button>
+    <h3>Partner With Us</h3>
+    <p>We partner with government agencies, nonprofits, VA coordinators, TDCJ offices, and community organizations to expand our reach and impact across Texas.</p>
+    <p style="margin-bottom:16px;">To discuss a partnership, reach us directly:</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <p><strong style="color:var(--burgundy);">📧 info@gracetraceministries.org</strong></p>
+      <p style="font-size:13px;color:var(--gray);">Please include your organization name, role, and what type of partnership you are interested in. We respond within 2 business days.</p>
+    </div>
+    <br>
+    <button class="modal-submit" onclick="window.location.href='mailto:info@gracetraceministries.org?subject=Partnership Inquiry — Grace Trace Ministries'">Send Partnership Email</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Grace <span>Trace</span> Ministries</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-cta" onclick="window.location.href='https://square.link/u/Gi4vEvTN';return false;">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Frisco, Texas — Est. 2026</div>
+      <h1>Restoring Lives.<br><em>Rebuilding</em><br>Community.</h1>
+      <p class="hero-sub">Grace Trace Ministries provides safe, structured housing and comprehensive support services for veterans, returning citizens, individuals with disabilities, and all those our community has forgotten.</p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn-primary">Our Programs</a>
+        <button class="btn-outline" onclick="openModal('modal-housing')">Get Housing Help</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-number">4</div><div class="stat-label">Program Types</div></div>
+        <div class="stat"><div class="stat-number">TX</div><div class="stat-label">State Licensed</div></div>
+        <div class="stat"><div class="stat-number">501c3</div><div class="stat-label">Nonprofit</div></div>
+      </div>
+      <div class="hero-quote">
+        <p>"Every person deserves a safe place to rebuild their life — regardless of where they have been."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="mission-strip">
+  <p>"We exist to trace the path of <span>grace</span> — walking alongside those who need it most, providing shelter, hope, and a genuine second chance."</p>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-section">
+    <div class="about-text">
+      <div class="eyebrow">About Us</div>
+      <h2>A Ministry Built on<br><em>Purpose & Compassion</em></h2>
+      <p>Grace Trace Ministries is a Texas-based 501(c)(3) nonprofit organization dedicated to providing safe, structured, and supportive housing for individuals who need it most. We serve returning citizens, homeless veterans, individuals with disabilities including deaf-blind individuals, and others who have been overlooked by our community.</p>
+      <p>Founded in Frisco, Texas, our programs are built on the belief that every person — regardless of their past — deserves dignity, stability, and the opportunity to thrive. We partner with government agencies, community organizations, and faith-inspired partners to deliver comprehensive housing and support services across Texas.</p>
+      <a href="#programs" class="btn-primary">Explore Our Programs</a>
+    </div>
+    <div class="about-visual">
+      <h3>Our Core Values</h3>
+      <div class="about-value">
+        <span class="about-value-icon">🤝</span>
+        <div class="about-value-text"><h4>Dignity</h4><p>Every resident is treated with respect and compassion — always.</p></div>
+      </div>
+      <div class="about-value">
+        <span class="about-value-icon">🏠</span>
+        <div class="about-value-text"><h4>Safety</h4><p>Structured, secure environments where residents can focus on rebuilding.</p></div>
+      </div>
+      <div class="about-value">
+        <span class="about-value-icon">🌱</span>
+        <div class="about-value-text"><h4>Growth</h4><p>Life skills, employment support, and programming for lasting change.</p></div>
+      </div>
+      <div class="about-value">
+        <span class="about-value-icon">⚖️</span>
+        <div class="about-value-text"><h4>Accountability</h4><p>Clear expectations, consistent structure, and transparent operations.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<div class="programs-wrap" id="programs">
+  <div class="programs-inner">
+    <div class="section-header">
+      <div class="eyebrow">Our Programs</div>
+      <h2>Housing Solutions for<br><em>Every Need</em></h2>
+      <p>We operate specialized housing programs designed to meet the unique needs of each population we serve.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <span class="program-num">01</span>
+        <span class="program-icon">🎖️</span>
+        <h3>Veterans Transitional Housing</h3>
+        <p>Safe, structured housing for veterans experiencing homelessness. We work directly with VA Medical Centers across Texas to provide immediate placement, case management, employment assistance, and a clear path to permanent housing stability.</p>
+        <span class="program-tag tag-green">VA GPD Partner</span>
+      </div>
+      <div class="program-card">
+        <span class="program-num">02</span>
+        <span class="program-icon">🔓</span>
+        <h3>Reentry Housing Program</h3>
+        <p>Transitional housing for individuals returning from incarceration. Our structured boarding homes provide accountability, drug testing, employment assistance, and life skills training to support successful reintegration into the community.</p>
+        <span class="program-tag tag-burgundy">TDCJ Partner</span>
+      </div>
+      <div class="program-card">
+        <span class="program-num">03</span>
+        <span class="program-icon">👁️</span>
+        <h3>DBMD Residential Care</h3>
+        <p>Specialized residential care for deaf-blind individuals with multiple disabilities under the Texas Medicaid DBMD waiver. Our trained staff provide Intervener services, tactile communication support, and individualized care plans.</p>
+        <span class="program-tag tag-gold">Medicaid DBMD</span>
+      </div>
+      <div class="program-card">
+        <span class="program-num">04</span>
+        <span class="program-icon">🏘️</span>
+        <h3>Group Home & Assisted Living</h3>
+        <p>Licensed group homes and assisted living facilities for elderly individuals and adults with intellectual and developmental disabilities. We provide 24-hour supervised care, personal support, and community integration services.</p>
+        <span class="program-tag tag-burgundy">HHSC Licensed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<div class="serve-section" id="serve">
+  <div class="serve-inner">
+    <div class="section-header">
+      <div class="eyebrow" style="color:var(--gold);">Who We Serve</div>
+      <h2 style="color:var(--white);">Every Person<br><em>Deserves a Home</em></h2>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-item"><span class="icon">🎖️</span><h4>Veterans</h4><p>Honorably discharged veterans experiencing homelessness or housing instability across Texas</p></div>
+      <div class="serve-item"><span class="icon">🔓</span><h4>Returning Citizens</h4><p>Individuals released from state or federal incarceration seeking safe housing and a fresh start</p></div>
+      <div class="serve-item"><span class="icon">👁️</span><h4>Deaf-Blind Individuals</h4><p>Adults who are both deaf and blind with additional disabilities requiring specialized residential care</p></div>
+      <div class="serve-item"><span class="icon">🤝</span><h4>Adults with Disabilities</h4><p>Individuals with intellectual, developmental, and physical disabilities needing supported living</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<div class="impact-wrap" id="impact">
+  <div class="impact-inner">
+    <div class="section-header">
+      <div class="eyebrow">Our Impact</div>
+      <h2>Building a Foundation<br><em>One Life at a Time</em></h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-text">
+        <h3>Government-Backed Programs That Deliver Real Results</h3>
+        <p>Grace Trace Ministries partners with the Texas Department of Criminal Justice, the Bureau of Prisons, the Department of Veterans Affairs, and Texas HHSC to deliver evidence-based housing programs that change lives.</p>
+        <p>Our structured approach combines safe housing with life skills training, employment assistance, and ongoing case management — giving every resident the tools they need to succeed long-term.</p>
+        <br>
+        <button class="btn-primary" onclick="openModal('modal-partner')">Partner With Us</button>
+      </div>
+      <div class="impact-numbers">
+        <div class="impact-num"><div class="num">4<span>+</span></div><div class="lbl">Program Types</div></div>
+        <div class="impact-num"><div class="num">10<span>+</span></div><div class="lbl">VA Partners in TX</div></div>
+        <div class="impact-num"><div class="num">501<span>c3</span></div><div class="lbl">Nonprofit Status</div></div>
+        <div class="impact-num"><div class="num">TX<span>✓</span></div><div class="lbl">State Licensed</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GET INVOLVED -->
+<div class="involve-wrap" id="involve">
+  <div class="involve-inner">
+    <div class="section-header">
+      <div class="eyebrow" style="color:var(--gold);">Get Involved</div>
+      <h2 style="color:var(--white);">Join the<br><em>Mission</em></h2>
+    </div>
+    <div class="involve-grid">
+      <div class="involve-card">
+        <span class="involve-icon">💝</span>
+        <h3>Donate</h3>
+        <p>Your financial support provides beds, meals, case management, and hope to individuals rebuilding their lives in Texas.</p>
+        <button class="involve-link" onclick="window.location.href='https://square.link/u/Gi4vEvTN'">Give Today →</button>
+      </div>
+      <div class="involve-card">
+        <span class="involve-icon">🤝</span>
+        <h3>Volunteer</h3>
+        <p>Share your skills and time with our residents. We welcome volunteers for life skills classes, job coaching, and mentoring.</p>
+        <button class="involve-link" onclick="openModal('modal-volunteer')">Get Involved →</button>
+      </div>
+      <div class="involve-card">
+        <span class="involve-icon">🏛️</span>
+        <h3>Partner With Us</h3>
+        <p>Government agencies, nonprofits, and community organizations — partner with us to expand our reach and impact.</p>
+        <button class="involve-link" onclick="openModal('modal-partner')">Contact Us →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DONATE BANNER -->
+<div class="donate-banner" id="donate">
+  <p><strong>Support Our Mission.</strong> Every dollar provides housing, hope, and a new beginning.</p>
+  <button class="btn-dark" onclick="window.location.href='https://square.link/u/Gi4vEvTN'">Make a Donation</button>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-header">
+      <div class="eyebrow" style="color:var(--gold);">Contact Us</div>
+      <h2 style="color:var(--white);">We Are Here<br><em>To Help</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Reach Out to Grace Trace Ministries</h3>
+        <div class="contact-item">
+          <span class="ci-icon">📧</span>
+          <div class="ci-text"><strong>Email</strong><a href="mailto:info@gracetraceministries.org">info@gracetraceministries.org</a></div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">📍</span>
+          <div class="ci-text"><strong>Mailing Address</strong>5729 Lebanon Rd #144605<br>Frisco, TX 75034</div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">🏛️</span>
+          <div class="ci-text"><strong>Organization Type</strong>501(c)(3) Nonprofit Corporation<br>State of Texas</div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">⏰</span>
+          <div class="ci-text"><strong>Response Time</strong>We respond to all inquiries within 2 business days</div>
+        </div>
+      </div>
+      <div class="contact-form" id="contact-form-wrap">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="c-fname" placeholder="Your first name"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="c-lname" placeholder="Your last name"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="c-email" placeholder="your@email.com"></div>
+        <div class="form-group">
+          <label>Reason for Contact</label>
+          <select id="c-reason">
+            <option value="">Select a reason</option>
+            <option>I need housing assistance</option>
+            <option>I am a veteran seeking housing</option>
+            <option>Referral from VA / TDCJ</option>
+            <option>I want to volunteer</option>
+            <option>I want to donate</option>
+            <option>Government / Agency partnership</option>
+            <option>Media inquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="c-msg" placeholder="Tell us how we can help you..."></textarea></div>
+        <button class="form-submit" onclick="submitContact()">Send Message</button>
+      </div>
+      <div class="success-msg" id="contact-success" style="grid-column:2;">
+        <span class="s-icon">✅</span>
+        <h4 style="color:var(--gold);">Message Sent</h4>
+        <p style="color:rgba(255,255,255,0.6);">Thank you for reaching out to Grace Trace Ministries. We will respond within 2 business days at info@gracetraceministries.org</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Grace <span>Trace</span> Ministries</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="window.location.href='https://square.link/u/Gi4vEvTN';return false;">Donate</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Grace Trace Ministries. All rights reserved. 501(c)(3) Nonprofit — Frisco, TX</p>
+</footer>
+
+<script>
+  // EmailJS Config
+  const EJS_SERVICE  = 'service_h1li9si';
+  const EJS_TEMPLATE = 'template_zzjc7ka';
+
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', function(e) {
+      if (e.target === this) closeModal(this.id);
+    });
+  });
+
+  function sendEmail(params, successId, formId) {
+    emailjs.send(EJS_SERVICE, EJS_TEMPLATE, params)
+      .then(() => {
+        if (formId) document.getElementById(formId).style.display = 'none';
+        const s = document.getElementById(successId);
+        s.style.display = 'block';
+      })
+      .catch((err) => {
+        alert('Something went wrong. Please email us directly at info@gracetraceministries.org');
+        console.error(err);
+      });
+  }
+
+  function submitHousing() {
+    const name  = document.getElementById('h-name').value.trim();
+    const email = document.getElementById('h-email').value.trim();
+    const type  = document.getElementById('h-type').value;
+    if (!name || !email || !type) { alert('Please fill in all required fields.'); return; }
+    sendEmail({
+      from_name:  name,
+      from_email: email,
+      phone:      document.getElementById('h-phone').value,
+      subject:    type,
+      message:    document.getElementById('h-msg').value || 'No additional message provided.'
+    }, 'housing-success', 'housing-form-wrap');
+  }
+
+  function submitVolunteer() {
+    const name  = document.getElementById('v-name').value.trim();
+    const email = document.getElementById('v-email').value.trim();
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
+    sendEmail({
+      from_name:  name,
+      from_email: email,
+      phone:      'N/A',
+      subject:    'Volunteer Interest — ' + (document.getElementById('v-type').value || 'General'),
+      message:    'Volunteer inquiry submitted from the website.'
+    }, 'vol-success', 'vol-form-wrap');
+  }
+
+  function submitContact() {
+    const fname = document.getElementById('c-fname').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    if (!fname || !email) { alert('Please fill in your name and email.'); return; }
+    sendEmail({
+      from_name:  fname + ' ' + document.getElementById('c-lname').value,
+      from_email: email,
+      phone:      'N/A',
+      subject:    document.getElementById('c-reason').value || 'General Inquiry',
+      message:    document.getElementById('c-msg').value || 'No message provided.'
+    }, 'contact-success', 'contact-form-wrap');
+  }
+</script>
+</body>
+</html>
