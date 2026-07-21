@@ -112,6 +112,7 @@
   .mission-strip { background:var(--green); padding:60px; text-align:center; }
   .mission-strip p { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,32px); font-style:italic; font-weight:300; color:var(--white); line-height:1.6; max-width:800px; margin:0 auto; }
   .mission-strip p span { color:var(--gold); }
+  @media(max-width:768px){ .mv-grid { grid-template-columns:1fr !important; gap:40px !important; } }
 
   /* ABOUT */
   .about-section { padding:100px 60px; max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
@@ -298,7 +299,7 @@
             <option>Veterans Housing</option>
             <option>Reentry Housing</option>
             <option>DBMD Residential Care</option>
-            <option>Young Adults & Transitioning Youth</option>
+            <option>Group Home / Assisted Living</option>
             <option>Not sure — need guidance</option>
           </select>
         </div>
@@ -394,7 +395,7 @@
     <div>
       <div class="hero-eyebrow">Frisco, Texas — Est. 2026</div>
       <h1>Restoring Lives.<br><em>Rebuilding</em><br>Community.</h1>
-      <p class="hero-sub">Grace Trace Ministries provides safe, structured housing and comprehensive support services for veterans, formerly incarcerated individuals, individuals with disabilities, and young adults transitioning to independent living.</p>
+      <p class="hero-sub">Grace Trace Ministries provides safe, structured housing and comprehensive support services for veterans, returning citizens, individuals with disabilities, and young adults and transitioning youth.</p>
       <div class="hero-actions">
         <a href="#programs" class="btn-primary">Our Programs</a>
         <button class="btn-outline" onclick="openModal('modal-housing')">Get Housing Help</button>
@@ -416,6 +417,22 @@
 <!-- MISSION -->
 <div class="mission-strip">
   <p>"We exist to trace the path of <span>grace</span> — walking alongside those who need it most, providing shelter, hope, and a genuine second chance."</p>
+</div>
+
+<!-- MISSION & VISION -->
+<div style="background:#FAF6EE; padding:80px 40px;">
+  <div class="mv-grid" style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px;">
+    <div style="border-left:4px solid #C9971C; padding-left:32px;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#C9971C; margin-bottom:16px;">Our Mission</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,2.5vw,30px); color:#4A0E1A; margin-bottom:20px; line-height:1.3;">Empowering Lives.<br><em>Building Stability.</em></h3>
+      <p style="font-family:'Lato',sans-serif; font-size:17px; color:#444; line-height:1.8;">Grace Trace Ministries empowers individuals rebuilding their lives by providing safe, structured housing, supportive services, and opportunities that foster independence, stability, and long-term success.</p>
+    </div>
+    <div style="border-left:4px solid #1A3D2B; padding-left:32px;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#1A3D2B; margin-bottom:16px;">Our Vision</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,2.5vw,30px); color:#4A0E1A; margin-bottom:20px; line-height:1.3;">Stronger Communities.<br><em>For Everyone.</em></h3>
+      <p style="font-family:'Lato',sans-serif; font-size:17px; color:#444; line-height:1.8;">To build stronger communities where every veteran, returning citizen, individual with disabilities, and young adult has access to safe housing, meaningful opportunities, and the support needed to thrive.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT -->
@@ -464,28 +481,24 @@
         <span class="program-icon">🎖️</span>
         <h3>Veterans Transitional Housing</h3>
         <p>Safe, structured housing for veterans experiencing homelessness. We work directly with VA Medical Centers across Texas to provide immediate placement, case management, employment assistance, and a clear path to permanent housing stability.</p>
-        <span class="program-tag tag-green">VA GPD Partner</span>
       </div>
       <div class="program-card">
         <span class="program-num">02</span>
         <span class="program-icon">🔓</span>
         <h3>Reentry Housing Program</h3>
-        <p>Transitional housing for individuals returning from incarceration. Our structured boarding homes provide accountability, drug testing, employment assistance, and life skills training to support successful reintegration into the community.</p>
-        <span class="program-tag tag-burgundy">TDCJ Partner</span>
+        <p>Transitional housing for individuals returning from incarceration. Our structured boarding homes provide accountability, drug testing, employment assistance, and life skills training to support successful reintegration into the community while providing a safe environment to thrive in.</p>
       </div>
       <div class="program-card">
         <span class="program-num">03</span>
         <span class="program-icon">👁️</span>
         <h3>DBMD Residential Care</h3>
         <p>Specialized residential care for deaf-blind individuals with multiple disabilities under the Texas Medicaid DBMD waiver. Our trained staff provide Intervener services, tactile communication support, and individualized care plans.</p>
-        <span class="program-tag tag-gold">Medicaid DBMD</span>
       </div>
       <div class="program-card">
         <span class="program-num">04</span>
         <span class="program-icon">🏘️</span>
-        <h3>Young Adults & Transitioning Youth</h3>
-        <p>For young adults and individuals with developmental or intellectual disabilities, the term often refers to the life skills required to transition out of the family home or the foster care system. It involves training in personal finance, meal preparation, employment, and housing, allowing individuals to successfully manage their day-to-day lives without adult supervision.</p>
-        <span class="program-tag tag-burgundy">HHSC Licensed</span>
+        <h3>Group Home & Assisted Living</h3>
+        <p>Licensed group homes and assisted living facilities for elderly individuals and adults with intellectual and developmental disabilities. We provide 24-hour supervised care, personal support, and community integration services.</p>
       </div>
     </div>
   </div>
@@ -502,7 +515,7 @@
       <div class="serve-item"><span class="icon">🎖️</span><h4>Veterans</h4><p>Honorably discharged veterans experiencing homelessness or housing instability across Texas</p></div>
       <div class="serve-item"><span class="icon">🔓</span><h4>Returning Citizens</h4><p>Individuals released from state or federal incarceration seeking safe housing and a fresh start</p></div>
       <div class="serve-item"><span class="icon">👁️</span><h4>Deaf-Blind Individuals</h4><p>Adults who are both deaf and blind with additional disabilities requiring specialized residential care</p></div>
-      <div class="serve-item"><span class="icon">🤝</span><h4>Adults with Disabilities</h4><p>Individuals with intellectual, developmental, and physical disabilities needing supported living</p></div>
+      <div class="serve-item"><span class="icon">🎓</span><h4>Young Adults & Transitioning Youth</h4><p>Young adults and individuals with developmental or intellectual disabilities gaining life skills to transition into independent living</p></div>
     </div>
   </div>
 </div>
