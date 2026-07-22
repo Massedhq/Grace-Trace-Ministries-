@@ -259,7 +259,14 @@
   /* RESPONSIVE */
   @media (max-width:900px) {
     nav { padding:16px 24px; }
-    .nav-links { display:none; }
+    .nav-links { display:none; position:fixed; top:0; left:0; width:100%; height:100vh; background:#0D0D0D; flex-direction:column; align-items:center; justify-content:center; gap:32px; z-index:9999; }
+    .nav-links.open { display:flex; }
+    .nav-links a { font-size:16px; }
+    .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; z-index:10000; }
+    .hamburger span { display:block; width:24px; height:2px; background:#fff; transition:0.3s; }
+    .hamburger.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
     .hero-content { grid-template-columns:1fr; padding:100px 24px 60px; gap:40px; }
     .about-section { grid-template-columns:1fr; padding:60px 24px; gap:40px; }
     .programs-inner, .serve-inner, .impact-inner, .involve-inner, .contact-inner { padding:0 24px; }
@@ -271,7 +278,11 @@
     footer { flex-direction:column; text-align:center; padding:40px 24px; }
     .donate-banner { padding:32px 24px; flex-direction:column; text-align:center; }
     .mission-strip { padding:60px 24px; }
+    #resources { padding:60px 24px !important; }
+    #resources .mv-grid, #resources [style*="grid-template-columns:repeat(2"] { grid-template-columns:1fr !important; }
   }
+  .hamburger { display:none; }
+  @media(max-width:900px){ .hamburger { display:flex; } }
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
@@ -378,15 +389,18 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Grace <span>Trace</span> Ministries</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#programs">Programs</a></li>
-    <li><a href="#serve">Who We Serve</a></li>
-    <li><a href="#impact">Impact</a></li>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#programs" onclick="closeNav()">Programs</a></li>
+    <li><a href="#serve" onclick="closeNav()">Who We Serve</a></li>
+    <li><a href="#impact" onclick="closeNav()">Impact</a></li>
+    <li><a href="#resources" onclick="closeNav()">Resources</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
     <li><a href="#" class="nav-cta" onclick="window.location.href='https://square.link/u/Gi4vEvTN';return false;">Donate</a></li>
   </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -591,8 +605,8 @@
         <div>
           <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Government Agencies</div>
           <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">TDCJ, BOP & VA Partners</h3>
-          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Grace Trace Ministries is a registered 501(c)(3) nonprofit actively pursuing provider relationships with TDCJ, the Bureau of Prisons, and the VA. View our full program overview including all programs, populations served, and compliance standards.</p>
-          <a href="Grace_Trace_Government_Agency_Packet.html" target="_blank" style="display:inline-block; background:#4A0E1A; color:#C9971C; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View Program Overview</a>
+          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Grace Trace Ministries is a registered 501(c)(3) nonprofit actively pursuing provider relationships with TDCJ, the Bureau of Prisons, and the VA. View our full agency partnership guide including all programs, populations served, and compliance standards.</p>
+          <a href="Grace_Trace_Government_Agency_Packet.html" target="_blank" style="display:inline-block; background:#4A0E1A; color:#C9971C; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View Agency Partnership Guide</a>
         </div>
       </div>
 
@@ -629,6 +643,28 @@
         </div>
       </div>
 
+      <!-- Card 5 — Program Overview -->
+      <div style="background:#fff; border-top:4px solid #C9971C; padding:32px; display:flex; gap:20px; align-items:flex-start;">
+        <div style="width:48px; height:48px; background:#C9971C; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:22px;">📄</div>
+        <div>
+          <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Program Overview</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">One-Page Program Overview</h3>
+          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">A complete one-page overview of everything Grace Trace Ministries offers — who we serve, all five programs, private room policy, and why agencies and families choose us. Ideal for quick reference and sharing.</p>
+          <a href="Grace_Trace_Program_Overview.html" target="_blank" style="display:inline-block; background:#C9971C; color:#4A0E1A; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View Program Overview</a>
+        </div>
+      </div>
+
+      <!-- Card 6 — Tri-Fold Brochure -->
+      <div style="background:#fff; border-top:4px solid #1A3D2B; padding:32px; display:flex; gap:20px; align-items:flex-start;">
+        <div style="width:48px; height:48px; background:#1A3D2B; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:22px;">📋</div>
+        <div>
+          <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Program Brochure</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Full Program Tri-Fold Brochure</h3>
+          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Our complete tri-fold brochure covers all programs, all populations served, our mission and vision, why choose Grace Trace Ministries, and how to get placed or make a referral. Perfect for sharing at community events and meetings.</p>
+          <a href="Grace_Trace_Trifold_Brochure.html" target="_blank" style="display:inline-block; background:#1A3D2B; color:#C9971C; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View Tri-Fold Brochure</a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Bottom CTA -->
@@ -642,50 +678,6 @@
 
   </div>
 </div>
-      <div style="background:#fff; border-top:4px solid #1A3D2B; padding:32px; display:flex; gap:20px; align-items:flex-start;">
-        <div style="width:48px; height:48px; background:#1A3D2B; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:22px;">⚖️</div>
-        <div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Referral Sources</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Parole Officers, Courts & Community Orgs</h3>
-          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Our referral guide covers who we accept, eligibility requirements, what we provide, and the step-by-step referral process. Print and keep on file or share with clients.</p>
-          <a href="Grace_Trace_Referral_Source_Guide.html" target="_blank" style="display:inline-block; background:#1A3D2B; color:#C9971C; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View & Print Referral Guide</a>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div style="background:#fff; border-top:4px solid #C9971C; padding:32px; display:flex; gap:20px; align-items:flex-start;">
-        <div style="width:48px; height:48px; background:#C9971C; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:22px;">🤝</div>
-        <div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Donors & Partners</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Community Partners & Supporters</h3>
-          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Our donor overview covers our mission, vision, the problem we solve, program impact, and all the ways to partner with and support Grace Trace Ministries.</p>
-          <a href="Grace_Trace_Donor_Partner_Overview.html" target="_blank" style="display:inline-block; background:#C9971C; color:#4A0E1A; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View & Print Donor Overview</a>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div style="background:#fff; border-top:4px solid #4A0E1A; padding:32px; display:flex; gap:20px; align-items:flex-start;">
-        <div style="width:48px; height:48px; background:#4A0E1A; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:22px;">👨‍👩‍👧</div>
-        <div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9971C; margin-bottom:6px;">Residents & Families</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">For Residents & Their Loved Ones</h3>
-          <p style="font-family:'Lato',sans-serif; font-size:13px; color:#555; line-height:1.7; margin-bottom:16px;">Our resident guide explains who we serve, private rooms, the 4 program phases, what to expect, what we expect from you, and exactly how to apply or refer a loved one.</p>
-          <a href="Grace_Trace_Resident_Family_Guide.html" target="_blank" style="display:inline-block; background:#4A0E1A; color:#C9971C; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 20px; text-decoration:none;">View & Print Resident Guide</a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Bottom CTA -->
-    <div style="background:#4A0E1A; padding:32px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-      <div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:#fff; margin-bottom:6px;">Need More Information?</div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">Contact us directly and we will send you everything you need. We respond to all inquiries within 24 hours.</div>
-      </div>
-      <a href="#contact" style="display:inline-block; background:#C9971C; color:#4A0E1A; font-size:11px; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:14px 28px; text-decoration:none; white-space:nowrap;">Contact Us Today</a>
-    </div>
-
-  </div>
 </div>
 
 <!-- DONATE BANNER -->
@@ -760,6 +752,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#programs">Programs</a></li>
     <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#resources">Resources</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#" onclick="window.location.href='https://square.link/u/Gi4vEvTN';return false;">Donate</a></li>
   </ul>
@@ -767,6 +760,15 @@
 </footer>
 
 <script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
   // EmailJS Config
   const EJS_SERVICE  = 'service_h1li9si';
   const EJS_TEMPLATE = 'template_zzjc7ka';
