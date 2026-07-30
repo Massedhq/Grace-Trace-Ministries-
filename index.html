@@ -289,8 +289,16 @@
     [style*="padding:80px 60px"] { padding:40px 20px !important; }
     [style*="padding:48px 60px"] { padding:32px 20px !important; }
   }
-  .hamburger { display:none; }
-  @media(max-width:900px){ .hamburger { display:flex; } }
+  /* LEADERSHIP */
+  @media(max-width:900px){
+    #leadership { padding:60px 0 !important; }
+    #leadership .leadership-exec { flex-direction:column !important; align-items:center !important; text-align:center !important; }
+    #leadership [style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns:1fr !important; }
+    #leadership [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
+    #leadership [style*="display:flex; gap:24px; align-items:flex-start"] { flex-direction:column; align-items:center; text-align:center; }
+    #leadership [style*="display:flex; gap:24px; align-items:flex-start"] img { margin:0 auto; }
+    #leadership h3 { font-size:18px !important; }
+  }
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
@@ -644,7 +652,7 @@
     </div>
 
     <!-- ROW 3 — Remaining Directors -->
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" class="leadership-row3">
 
       <!-- Ialana Tippins -->
       <div style="background:#FAF6EE; padding:28px; border-top:4px solid #C9971C;">
@@ -655,28 +663,6 @@
         <div style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#C9971C; margin-bottom:4px;">Director of Intake & Resident Relations</div>
         <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Ialana Tippins</h3>
         <p style="font-family:'Lato',sans-serif; font-size:12.5px; color:#555; line-height:1.7;">Ialana Tippins serves as Director of Intake & Resident Relations for Grace Trace Ministries, where she oversees the resident intake process and helps create a welcoming, supportive experience from the first point of contact. She coordinates resident transportation, strengthens resident relationships, assists with community outreach, and ensures individuals receive the guidance needed to successfully transition into our programs.</p>
-      </div>
-
-      <!-- Placeholder 2 -->
-      <div style="background:#FAF6EE; padding:28px; border-top:4px solid #C9971C;">
-        <div style="margin-bottom:16px;">
-          <img src="images/team/team-member-2.jpg" alt="Team Member" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #C9971C;">
-          <div style="width:80px; height:80px; border-radius:50%; background:#C9971C; display:none; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:24px; color:#4A0E1A; font-weight:700; border:3px solid #4A0E1A;">—</div>
-        </div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#C9971C; margin-bottom:4px;">Position Title</div>
-        <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Team Member</h3>
-        <p style="font-family:'Lato',sans-serif; font-size:12.5px; color:#555; line-height:1.7;">Bio coming soon.</p>
-      </div>
-
-      <!-- Placeholder 3 -->
-      <div style="background:#FAF6EE; padding:28px; border-top:4px solid #C9971C;">
-        <div style="margin-bottom:16px;">
-          <img src="images/team/team-member-3.jpg" alt="Team Member" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #C9971C;">
-          <div style="width:80px; height:80px; border-radius:50%; background:#C9971C; display:none; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:24px; color:#4A0E1A; font-weight:700; border:3px solid #4A0E1A;">—</div>
-        </div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#C9971C; margin-bottom:4px;">Position Title</div>
-        <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#4A0E1A; margin-bottom:10px;">Team Member</h3>
-        <p style="font-family:'Lato',sans-serif; font-size:12.5px; color:#555; line-height:1.7;">Bio coming soon.</p>
       </div>
 
     </div>
