@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Network Partners — Grace Trace Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A0E1A;--green:#1A3D2B;--gold:#C9971C;--ivory:#FAF6EE;--ivory-dk:#F0E8D8;--gray:#444;--white:#fff;}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Lato',sans-serif;background:var(--ivory);color:#333;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,13,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,151,28,0.2);width:100%;box-sizing:border-box;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.back-btn{background:var(--gold);color:var(--burgundy);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;}
+
+.header{background:linear-gradient(135deg,#0D0D0D 0%,#2A0608 50%,#4A0E1A 100%);padding:120px 60px 60px;text-align:center;border-bottom:3px solid var(--gold);}
+.header .eyebrow{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;}
+.header h1 em{color:var(--gold);}
+.header p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;max-width:700px;margin:0 auto;}
+
+.body-wrap{max-width:1100px;margin:0 auto;padding:80px 60px;}
+.section-label{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--burgundy);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--gold);}
+
+.intro-text{font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:48px;max-width:800px;}
+
+.category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px;}
+.category-card{background:#fff;padding:28px 32px;border-top:4px solid var(--burgundy);}
+.category-card .icon{font-size:28px;margin-bottom:12px;}
+.category-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--burgundy);margin-bottom:10px;}
+.category-card p{font-size:13px;color:var(--gray);line-height:1.7;}
+
+.green-strip{background:var(--green);padding:48px 60px;}
+.green-strip h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:12px;}
+.green-strip h2 em{color:var(--gold);}
+.green-strip p{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.8;max-width:700px;margin-bottom:28px;}
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.check-item{display:flex;gap:12px;align-items:flex-start;}
+.check{width:20px;height:20px;background:var(--gold);color:var(--burgundy);font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.check-text{font-size:13px;color:rgba(255,255,255,0.88);line-height:1.6;}
+
+.cta-section{background:var(--burgundy);padding:60px;text-align:center;}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#fff;margin-bottom:12px;}
+.cta-section h2 em{color:var(--gold);}
+.cta-section p{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.8;max-width:600px;margin:0 auto 28px;}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--burgundy);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;}
+
+.footer{background:linear-gradient(135deg,#0D0D0D 0%,#2A0608 50%,#4A0E1A 100%);padding:24px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:3px solid var(--gold);}
+.footer-left{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:#fff;}
+.footer-left span{color:var(--gold);}
+.footer-contact{font-size:11px;color:rgba(255,255,255,0.85);margin-bottom:3px;}
+.footer-contact a{color:var(--gold);text-decoration:none;}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .header{padding:100px 20px 48px;}
+  .body-wrap{padding:48px 20px;}
+  .category-grid{grid-template-columns:1fr;}
+  .green-strip{padding:40px 20px;}
+  .check-grid{grid-template-columns:1fr;}
+  .cta-section{padding:48px 20px;}
+  .footer{padding:20px;flex-direction:column;text-align:center;}
+  .footer-right{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Grace <span>Trace</span> Ministries</a>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<div class="header">
+  <div class="eyebrow">Grace Trace Ministries</div>
+  <h1>Our Network <em>Partners</em></h1>
+  <p>Grace Trace Ministries is committed to building a strong network of partners who share our dedication to housing stability, community reintegration, and long-term independence for the individuals we serve.</p>
+</div>
+
+<div class="body-wrap">
+
+  <div class="section-label">Partnership Opportunities</div>
+  <div class="section-title">Who We Are Looking to Partner With</div>
+
+  <p class="intro-text">We believe that lasting change happens through collaboration. Grace Trace Ministries actively seeks partnerships with organizations across multiple sectors that share our commitment to serving returning citizens, veterans, individuals with disabilities, and young adults on their path to independence.</p>
+
+  <div class="category-grid">
+
+    <div class="category-card">
+      <div class="icon">🏛️</div>
+      <h3>Government Agencies</h3>
+      <p>We seek partnerships with correctional agencies, veterans' programs, courts, and government organizations that place eligible individuals into structured transitional housing. Our programs are designed to meet the compliance, reporting, and accountability standards required by government partners.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">⚖️</div>
+      <h3>Referral Organizations</h3>
+      <p>We welcome referral relationships with parole and probation departments, courts, hospitals, behavioral health providers, social workers, and nonprofit organizations looking for a reliable structured housing placement for their clients.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">💼</div>
+      <h3>Workforce & Employment Partners</h3>
+      <p>We seek partnerships with employers, staffing agencies, and workforce development organizations committed to providing fair employment opportunities for individuals completing our transitional housing programs.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">🏥</div>
+      <h3>Healthcare & Behavioral Health Providers</h3>
+      <p>We look to partner with healthcare providers, mental health organizations, and substance abuse treatment centers to ensure our residents have access to the medical and behavioral health support they need throughout their program journey.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">🎓</div>
+      <h3>Educational Institutions</h3>
+      <p>We seek relationships with community colleges, vocational schools, adult education programs, and GED preparation organizations to connect residents with educational opportunities that support long-term self-sufficiency.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">🤝</div>
+      <h3>Community & Faith-Based Organizations</h3>
+      <p>We welcome partnerships with faith-based organizations, nonprofits, food banks, legal aid providers, and community groups who share our mission of supporting individuals as they rebuild their lives with dignity and purpose.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">🏢</div>
+      <h3>Corporate & Business Partners</h3>
+      <p>We seek corporate sponsors, second chance employers, and business partners willing to invest in our mission through financial support, in-kind donations, volunteer engagement, and employment opportunities for our program graduates.</p>
+    </div>
+
+    <div class="category-card">
+      <div class="icon">💛</div>
+      <h3>Donors & Philanthropic Partners</h3>
+      <p>We welcome relationships with individual donors, private foundations, and philanthropic organizations whose giving priorities align with housing stability, reentry support, veterans services, and community development across Texas.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="green-strip">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="color:var(--gold);">What We Offer Partners</div>
+    <h2>What Grace Trace <em>Brings to Every Partnership</em></h2>
+    <p>When you partner with Grace Trace Ministries you gain a professional, mission-driven organization committed to accountability, transparency, and measurable outcomes for every individual we serve.</p>
+    <div class="check-grid">
+      <div class="check-item"><div class="check">✓</div><div class="check-text">501(c)(3) registered nonprofit — State of Texas</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">SAM.gov registered — eligible for federal partnerships</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Structured programs with documented accountability</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Professional intake coordination and case management</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Private residential accommodations for every resident</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Employment readiness and workforce development support</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Progress reporting and partner communication</div></div>
+      <div class="check-item"><div class="check">✓</div><div class="check-text">Dedicated leadership committed to long-term success</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to <em>Partner With Us?</em></h2>
+  <p>If your organization shares our commitment to housing stability, community reintegration, and long-term independence we would love to connect and explore how we can work together to make a lasting difference.</p>
+  <a href="index.html#contact" class="cta-btn">Contact Us to Partner</a>
+</div>
+
+<div class="footer">
+  <div class="footer-left">Grace Trace <span>Ministries</span><br><span style="font-size:10px;color:rgba(201,151,28,0.6);font-family:Lato,sans-serif;font-weight:300;">501(c)(3) Nonprofit Organization — State of Texas</span></div>
+  <div style="text-align:right;">
+    <div class="footer-contact">✉ <a href="mailto:info@gracetraceministries.org">info@gracetraceministries.org</a></div>
+    <div class="footer-contact">🌐 <a href="https://gracetraceministries.org">gracetraceministries.org</a></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.3);margin-top:4px;">Tracing the Path of Grace with New Beginnings</div>
+  </div>
+</div>
+
+</body>
+</html>
