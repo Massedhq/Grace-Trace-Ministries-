@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Grace Trace Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A0E1A;--green:#1A3D2B;--gold:#C9971C;--ivory:#FAF6EE;--ivory-dk:#F0E8D8;--gray:#444;--white:#fff;}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Lato',sans-serif;background:var(--ivory);color:#333;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,13,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,151,28,0.2);width:100%;box-sizing:border-box;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.back-btn{background:var(--gold);color:var(--burgundy);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;}
+
+.header{background:linear-gradient(135deg,#0D0D0D 0%,#2A0608 50%,#4A0E1A 100%);padding:120px 60px 60px;text-align:center;border-bottom:3px solid var(--gold);}
+.header .eyebrow{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;}
+.header h1 em{color:var(--gold);}
+.header p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;max-width:650px;margin:0 auto;}
+
+.body-wrap{max-width:1100px;margin:0 auto;padding:80px 60px;}
+.section-label{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--burgundy);margin-bottom:28px;padding-bottom:12px;border-bottom:2px solid var(--gold);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px;}
+.card{background:#fff;padding:32px;display:flex;gap:20px;align-items:flex-start;}
+.card-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px;}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--burgundy);margin-bottom:10px;}
+.card p{font-size:13px;color:#555;line-height:1.7;margin-bottom:16px;}
+.card-btn{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;}
+
+.cta-bar{background:var(--burgundy);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.cta-bar h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;}
+.cta-bar p{font-size:13px;color:rgba(255,255,255,0.7);}
+.cta-btn{background:var(--gold);color:var(--burgundy);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;text-decoration:none;white-space:nowrap;}
+
+.footer{background:linear-gradient(135deg,#0D0D0D 0%,#2A0608 50%,#4A0E1A 100%);padding:24px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:3px solid var(--gold);}
+.footer-left{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:#fff;}
+.footer-left span{color:var(--gold);}
+.footer-contact{font-size:11px;color:rgba(255,255,255,0.85);margin-bottom:3px;}
+.footer-contact a{color:var(--gold);text-decoration:none;}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .header{padding:100px 20px 48px;}
+  .body-wrap{padding:48px 20px;}
+  .cards-grid{grid-template-columns:1fr;}
+  .cta-bar{flex-direction:column;text-align:center;}
+  .footer{padding:20px;flex-direction:column;text-align:center;}
+  .footer-right{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Grace <span>Trace</span> Ministries</a>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<div class="header">
+  <div class="eyebrow">Grace Trace Ministries</div>
+  <h1>Who We Are <em>& How We Can Help</em></h1>
+  <p>Whether you are a government agency, referral partner, community supporter, or someone looking for housing — we have resources designed specifically for you.</p>
+</div>
+
+<div class="body-wrap">
+
+  <div class="section-label">Our Resources</div>
+  <div class="section-title">Information for Every Audience</div>
+
+  <div class="cards-grid">
+
+    <!-- Government Agencies -->
+    <div class="card" style="border-top:4px solid #4A0E1A;">
+      <div class="card-icon" style="background:#4A0E1A;">🏛️</div>
+      <div>
+        <div class="card-label">Government Agencies</div>
+        <h3>Trusted Housing & Reentry Partner</h3>
+        <p>Grace Trace Ministries partners with correctional agencies, veterans' programs, and government organizations by providing structured transitional housing, accountability, case management, workforce development, and individualized support. Our goal is to help agencies place eligible individuals into safe, professionally managed environments that promote stability and successful community reintegration.</p>
+        <a href="Grace_Trace_Government_Agency_Packet.html" target="_blank" class="card-btn" style="background:#4A0E1A;color:#C9971C;">Agency Resource Center</a>
+      </div>
+    </div>
+
+    <!-- Referral Partners -->
+    <div class="card" style="border-top:4px solid #1A3D2B;">
+      <div class="card-icon" style="background:#1A3D2B;">⚖️</div>
+      <div>
+        <div class="card-label">Referral Partners</div>
+        <h3>A Reliable Community Referral Resource</h3>
+        <p>We welcome referrals from parole officers, probation departments, courts, hospitals, behavioral health providers, social workers, nonprofit organizations, veteran service organizations, and community agencies. Every referral receives a professional intake review, individualized service planning, and access to structured housing and supportive services designed to encourage long-term success.</p>
+        <a href="Grace_Trace_Referral_Source_Guide.html" target="_blank" class="card-btn" style="background:#1A3D2B;color:#C9971C;">Refer a Client</a>
+      </div>
+    </div>
+
+    <!-- Donors & Community Partners -->
+    <div class="card" style="border-top:4px solid #C9971C;">
+      <div class="card-icon" style="background:#C9971C;">🤝</div>
+      <div>
+        <div class="card-label">Donors & Community Partners</div>
+        <h3>Invest in Lasting Change</h3>
+        <p>Your partnership helps provide more than housing — it helps create opportunities for individuals rebuilding their lives. Donations and community partnerships support safe residential environments, employment readiness, transportation assistance, life-skills education, and case management that empowers residents to become self-sufficient and productive members of their communities.</p>
+        <a href="Grace_Trace_Donor_Partner_Overview.html" target="_blank" class="card-btn" style="background:#C9971C;color:#4A0E1A;">Partner With Grace Trace</a>
+      </div>
+    </div>
+
+    <!-- Residents & Families -->
+    <div class="card" style="border-top:4px solid #4A0E1A;">
+      <div class="card-icon" style="background:#4A0E1A;">👨‍👩‍👧</div>
+      <div>
+        <div class="card-label">Residents & Families</div>
+        <h3>A Safe Place to Rebuild</h3>
+        <p>Whether you are returning home after incarceration, transitioning from homelessness, a veteran seeking stable housing, or a young adult working toward independence, Grace Trace Ministries provides a structured environment focused on safety, accountability, dignity, and personal growth. Our team works alongside every resident to develop an individualized path toward permanent housing and long-term independence.</p>
+        <a href="Grace_Trace_Resident_Family_Guide.html" target="_blank" class="card-btn" style="background:#4A0E1A;color:#C9971C;">Apply for Housing</a>
+      </div>
+    </div>
+
+    <!-- Program Overview -->
+    <div class="card" style="border-top:4px solid #C9971C;">
+      <div class="card-icon" style="background:#C9971C;">📄</div>
+      <div>
+        <div class="card-label">Program Overview</div>
+        <h3>One-Page Program Overview</h3>
+        <p>A complete one-page overview of everything Grace Trace Ministries offers — who we serve, all five programs, private room policy, and why agencies and families choose us.</p>
+        <a href="Grace_Trace_Program_Overview.html" target="_blank" class="card-btn" style="background:#C9971C;color:#4A0E1A;">View Program Overview</a>
+      </div>
+    </div>
+
+    <!-- Tri-Fold Brochure -->
+    <div class="card" style="border-top:4px solid #1A3D2B;">
+      <div class="card-icon" style="background:#1A3D2B;">📋</div>
+      <div>
+        <div class="card-label">Program Brochure</div>
+        <h3>Full Program Tri-Fold Brochure</h3>
+        <p>Our complete tri-fold brochure covers all programs, all populations served, our mission and vision, why choose Grace Trace Ministries, and how to get placed or make a referral.</p>
+        <a href="Grace_Trace_Trifold_Brochure.html" target="_blank" class="card-btn" style="background:#1A3D2B;color:#C9971C;">View Tri-Fold Brochure</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-bar">
+    <div>
+      <h3>Have Questions?</h3>
+      <p>We respond to all inquiries within 24 hours.</p>
+    </div>
+    <a href="index.html#contact" class="cta-btn">Contact Us Today</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-left">Grace Trace <span>Ministries</span><br><span style="font-size:10px;color:rgba(201,151,28,0.6);font-family:Lato,sans-serif;font-weight:300;">501(c)(3) Nonprofit Organization — State of Texas</span></div>
+  <div style="text-align:right;">
+    <div class="footer-contact">✉ <a href="mailto:info@gracetraceministries.org">info@gracetraceministries.org</a></div>
+    <div class="footer-contact">🌐 <a href="https://gracetraceministries.org">gracetraceministries.org</a></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.3);margin-top:4px;">Tracing the Path of Grace with New Beginnings</div>
+  </div>
+</div>
+
+</body>
+</html>
