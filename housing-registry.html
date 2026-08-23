@@ -324,6 +324,8 @@
       </div>
     </div>
 
+    <div id="step1-rest" style="display:none;">
+
     <div class="form-block">
       <div class="form-block-title">Personal <em>Information</em></div>
       <div class="form-block-sub">Please provide your basic contact information. All information is kept confidential and used solely to connect you with housing resources.</div>
@@ -502,6 +504,8 @@
       <button class="btn-primary" onclick="goToStep2()">Continue to Step 2 →</button>
       <a href="index.html" class="btn-outline">← Back to Main Site</a>
     </div>
+
+    </div><!-- /step1-rest -->
   </div>
 
   <!-- STEP 2 -->
@@ -693,6 +697,7 @@
   // Show/hide conditional blocks based on registrant type
   document.getElementById('s1-regtype').addEventListener('change', function() {
     const type = currentRegType();
+    document.getElementById('step1-rest').style.display = type ? 'block' : 'none';
     document.getElementById('incarceration-block').style.display = (type === 'Returning Citizen / Reentry') ? 'block' : 'none';
     document.getElementById('agency-block').style.display = (type === 'Referred by an Agency / Organization') ? 'block' : 'none';
     document.getElementById('veteran-housing-block').style.display = (type === 'Veteran') ? 'block' : 'none';
