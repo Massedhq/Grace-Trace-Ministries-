@@ -146,6 +146,13 @@
   .radio-label input { accent-color:var(--green); cursor:pointer; }
   .radio-label.selected { border-color:var(--green); background:rgba(26,61,43,0.04); }
 
+  /* REGISTRANT TYPE (Step 1, question 1) */
+  .regtype-block {
+    background:var(--white); border:1px solid rgba(74,14,26,0.15); border-left:4px solid var(--burgundy);
+    padding:32px 36px; margin-bottom:48px;
+  }
+  .regtype-block .form-block-title { border-bottom:none; margin-bottom:6px; padding-bottom:0; }
+
   /* CAREER READY BOX */
   .career-box {
     border-left:4px solid var(--green-mid); background:rgba(26,61,43,0.06);
@@ -243,6 +250,7 @@
     .check-grid.three { grid-template-columns:1fr 1fr; }
     .career-list { grid-template-columns:1fr; }
     .radio-row { flex-direction:column; }
+    .regtype-block { padding:24px 20px; }
     footer { flex-direction:column; text-align:center; padding:40px 20px; }
     .footer-links { justify-content:center; gap:16px; }
     .success-wrap { padding:40px 20px; }
@@ -275,7 +283,7 @@
   <div class="page-hero-inner">
     <div class="eyebrow">Grace Trace Ministries</div>
     <h1>Grace Trace<br><em>Housing Registry</em></h1>
-    <p>Begin your journey toward stable housing and a successful reentry. Complete both steps so our team can start preparing for your arrival before you leave.</p>
+    <p>Begin your journey toward stable housing and a successful transition. Complete both steps so our team can start preparing for you before you arrive.</p>
   </div>
 </div>
 
@@ -299,6 +307,22 @@
 
   <!-- STEP 1 -->
   <div class="form-step active" id="step1">
+
+    <!-- REGISTRANT TYPE — always first -->
+    <div class="regtype-block">
+      <div class="form-block-title">Who Is <em>Registering?</em></div>
+      <div class="form-block-sub">Select the option that best describes your situation. This helps us ask you the right questions — you won't be asked anything that doesn't apply to you.</div>
+      <div class="form-group full" style="margin-top:20px;">
+        <select id="s1-regtype">
+          <option value="">Select the option that best describes you</option>
+          <option value="Returning Citizen / Reentry">Returning Citizen / Reentry (currently incarcerated, preparing for release)</option>
+          <option value="Veteran">Veteran</option>
+          <option value="Young Adult / Transitioning Youth">Young Adult / Transitioning Youth</option>
+          <option value="Individual with Disabilities (DBMD)">Individual with Disabilities (DBMD)</option>
+          <option value="Referred by an Agency / Organization">Workforce Solutions, a caseworker, or another agency/nonprofit</option>
+        </select>
+      </div>
+    </div>
 
     <div class="form-block">
       <div class="form-block-title">Personal <em>Information</em></div>
@@ -325,10 +349,6 @@
           <label>Date of Birth <span class="req">*</span></label>
           <input type="date" id="s1-dob">
         </div>
-        <div class="form-group">
-          <label>County of Release <span class="req">*</span></label>
-          <input type="text" id="s1-county" placeholder="e.g. Harris County">
-        </div>
         <div class="form-group full">
           <label>Emergency Contact Name &amp; Relationship</label>
           <input type="text" id="s1-emergency" placeholder="e.g. Denise Thompson — Sister">
@@ -337,7 +357,8 @@
       </div>
     </div>
 
-    <div class="form-block">
+    <!-- INCARCERATION DETAILS — shown only for Returning Citizen / Reentry -->
+    <div class="form-block" id="incarceration-block" style="display:none;">
       <div class="form-block-title">Incarceration <em>Details</em></div>
       <div class="form-block-sub">This information helps us coordinate with your facility and prepare your housing placement ahead of your release date.</div>
       <div class="form-grid">
@@ -359,10 +380,70 @@
           <label>Expected Release Date <span class="req">*</span></label>
           <input type="date" id="s1-release">
         </div>
+        <div class="form-group">
+          <label>County of Release <span class="req">*</span></label>
+          <input type="text" id="s1-release-county" placeholder="e.g. Harris County">
+        </div>
         <div class="form-group full">
           <label>TDCJ Number or Federal Register Number</label>
           <input type="text" id="s1-tdcj" placeholder="Optional — can be provided later">
           <div class="optional-note">Optional on this form. May be requested during formal intake.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENCY REFERRAL DETAILS — shown only for Referred by an Agency -->
+    <div class="form-block" id="agency-block" style="display:none;">
+      <div class="form-block-title">Agency <em>Referral Details</em></div>
+      <div class="form-block-sub">Let us know who referred you so we can coordinate with them and follow up appropriately.</div>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Referring Agency or Organization <span class="req">*</span></label>
+          <input type="text" id="s1-agency-name" placeholder="e.g. Workforce Solutions Texoma">
+        </div>
+        <div class="form-group full">
+          <label>How Were You Referred? <span class="req">*</span></label>
+          <select id="s1-referral-method">
+            <option value="">Select an option</option>
+            <option>Formal referral form or letter</option>
+            <option>Phone call from the agency</option>
+            <option>Email from the agency</option>
+            <option>In-person introduction / warm handoff</option>
+            <option>Agency shared our registry link</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Agency Contact Name</label>
+          <input type="text" id="s1-agency-contact" placeholder="Caseworker or contact name">
+          <div class="optional-note">Optional</div>
+        </div>
+        <div class="form-group">
+          <label>Agency Contact Phone or Email</label>
+          <input type="text" id="s1-agency-contact-info" placeholder="Phone or email">
+          <div class="optional-note">Optional</div>
+        </div>
+        <div class="form-group full">
+          <label>Reason for Referral / Notes</label>
+          <textarea id="s1-agency-notes" placeholder="Anything the agency shared that would help us understand your situation"></textarea>
+          <div class="optional-note">Optional</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VETERAN HOUSING PREFERENCE — shown only for Veteran -->
+    <div class="form-block" id="veteran-housing-block" style="display:none;">
+      <div class="form-block-title">Housing <em>Preference</em></div>
+      <div class="form-block-sub">Grace Trace veteran housing typically starts as a shared transitional house — you'll have your own private room, but share the house with a few other veterans — before moving toward fully independent housing. Let us know your goal so we can plan your path.</div>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Which best describes your housing goal? <span class="req">*</span></label>
+          <select id="s1-vet-housing">
+            <option value="">Select an option</option>
+            <option>I'm comfortable in a shared transitional house (private room, shared common areas) for now</option>
+            <option>My goal is to move toward independent single housing (studio/efficiency) as soon as possible</option>
+            <option>Not sure — open to guidance from Grace Trace staff</option>
+          </select>
         </div>
       </div>
     </div>
@@ -372,29 +453,23 @@
       <div class="form-block-sub">Help us understand your situation so we can prepare the right level of support for your arrival.</div>
       <div class="form-grid">
         <div class="form-group full">
-          <label>Population <span class="req">*</span></label>
-          <select id="s1-population">
-            <option value="">Select the option that best describes you</option>
-            <option>Returning Citizen / Reentry</option>
-            <option>Veteran</option>
-            <option>Young Adult (18–25)</option>
-            <option>Individual with Disabilities (DBMD)</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>How soon after release will you need housing? <span class="req">*</span></label>
+          <label>How soon will you need housing? <span class="req">*</span></label>
           <select id="s1-timeline">
             <option value="">Select a timeline</option>
-            <option>Immediately upon release</option>
+            <option>Immediately</option>
             <option>Within 7 days</option>
             <option>Within 30 days</option>
+            <option>Within 3 months</option>
+            <option>Within 6 months</option>
+            <option>Within 1 year</option>
+            <option>Not urgent — planning ahead</option>
           </select>
         </div>
         <div class="form-group full">
           <label>Do you currently have family or another housing option? <span class="req">*</span></label>
           <select id="s1-other-housing">
             <option value="">Select an option</option>
-            <option>No — I will need housing upon release</option>
+            <option>No — I will need housing</option>
             <option>Yes — but it is not stable or long term</option>
             <option>Yes — I have a plan but want to register as a backup</option>
           </select>
@@ -409,6 +484,7 @@
             <option>Church or Community Organization</option>
             <option>Another Resident or Former Resident</option>
             <option>TDCJ or BOP Staff</option>
+            <option>Workforce Solutions</option>
             <option>Other</option>
           </select>
         </div>
@@ -436,12 +512,12 @@
       <div class="form-block-sub">Your employment goals help us begin connecting you with workforce partners and job opportunities before your release.</div>
       <div class="form-grid">
         <div class="form-group full">
-          <label>Will you need employment after release? <span class="req">*</span></label>
+          <label>Will you need employment? <span class="req">*</span></label>
           <select id="s2-emp-timeline">
             <option value="">Select an option</option>
-            <option>Yes — I need employment immediately upon release</option>
-            <option>Yes — within 30 days of release</option>
-            <option>Yes — within 90 days of release</option>
+            <option>Yes — I need employment immediately</option>
+            <option>Yes — within 30 days</option>
+            <option>Yes — within 90 days</option>
             <option>I already have employment arranged</option>
             <option>Not sure yet</option>
           </select>
@@ -473,10 +549,11 @@
             <option value="">Select an option</option>
             <option>Yes</option>
             <option>No</option>
+            <option>Not applicable</option>
           </select>
         </div>
         <div class="form-group full">
-          <label>Would you like help creating or updating your resume before release?</label>
+          <label>Would you like help creating or updating your resume?</label>
           <div class="radio-row">
             <label class="radio-label"><input type="radio" name="resume" value="Yes"> Yes — I need help with my resume</label>
             <label class="radio-label"><input type="radio" name="resume" value="No"> No — I already have one</label>
@@ -491,7 +568,7 @@
       <div class="form-block-sub">We connect residents with educational institutions and training programs. Let us know your interests so we can start planning before you arrive.</div>
       <div class="form-grid">
         <div class="form-group full">
-          <label>Are you interested in pursuing education after release? (Select all that apply)</label>
+          <label>Are you interested in pursuing education? (Select all that apply)</label>
           <div class="check-grid">
             <label class="check-label"><input type="checkbox" name="edu" value="GED / High School Diploma"> GED / High School Diploma</label>
             <label class="check-label"><input type="checkbox" name="edu" value="Trade or Vocational School"> Trade or Vocational School</label>
@@ -510,11 +587,11 @@
 
     <div class="form-block">
       <div class="form-block-title">Support <em>Services</em></div>
-      <div class="form-block-sub">Select every service you will need so we can begin coordinating resources for you before your release date.</div>
+      <div class="form-block-sub">Select every service you will need so we can begin coordinating resources for you before you arrive.</div>
       <div class="form-group">
         <label>I will need assistance with: (Select all that apply)</label>
         <div class="check-grid three" style="margin-top:12px;">
-          <label class="check-label"><input type="checkbox" name="services" value="Transportation from release location"> Transportation from release</label>
+          <label class="check-label"><input type="checkbox" name="services" value="Transportation"> Transportation</label>
           <label class="check-label"><input type="checkbox" name="services" value="State ID or Driver's License"> State ID or Driver's License</label>
           <label class="check-label"><input type="checkbox" name="services" value="Social Security Card"> Social Security Card</label>
           <label class="check-label"><input type="checkbox" name="services" value="Birth Certificate"> Birth Certificate</label>
@@ -575,7 +652,7 @@
     <ul>
       <li>Our intake team will review your registration and confirm your eligibility.</li>
       <li>You will be contacted at the phone number or email you provided to schedule an intake conversation.</li>
-      <li>We will begin coordinating services based on your needs — including transportation, documents, and employment planning — before your release date.</li>
+      <li>We will begin coordinating services based on your needs — including transportation, documents, and employment planning.</li>
       <li>You will receive information about the Grace Trace Career Ready Program and what to expect upon arrival.</li>
     </ul>
   </div>
@@ -609,10 +686,32 @@
     document.getElementById('hamburger').classList.remove('open');
   }
 
+  function currentRegType() {
+    return document.getElementById('s1-regtype').value || '';
+  }
+
+  // Show/hide conditional blocks based on registrant type
+  document.getElementById('s1-regtype').addEventListener('change', function() {
+    const type = currentRegType();
+    document.getElementById('incarceration-block').style.display = (type === 'Returning Citizen / Reentry') ? 'block' : 'none';
+    document.getElementById('agency-block').style.display = (type === 'Referred by an Agency / Organization') ? 'block' : 'none';
+    document.getElementById('veteran-housing-block').style.display = (type === 'Veteran') ? 'block' : 'none';
+    this.style.borderColor = '';
+  });
+
   function goToStep2() {
-    // Validate step 1
-    const required = ['s1-fname','s1-lname','s1-phone','s1-dob','s1-county','s1-system','s1-facility','s1-release','s1-population','s1-timeline','s1-other-housing','s1-referral'];
     let valid = true;
+
+    // Registrant type is always required
+    if (!currentRegType()) {
+      document.getElementById('s1-regtype').style.borderColor = '#8B1E35';
+      valid = false;
+    } else {
+      document.getElementById('s1-regtype').style.borderColor = '';
+    }
+
+    // Base required fields for everyone
+    const required = ['s1-fname','s1-lname','s1-phone','s1-dob','s1-timeline','s1-other-housing','s1-referral'];
     required.forEach(id => {
       const el = document.getElementById(id);
       if (!el.value.trim()) {
@@ -622,12 +721,48 @@
         el.style.borderColor = '';
       }
     });
+
+    // Conditional required fields
+    const type = currentRegType();
+    if (type === 'Returning Citizen / Reentry') {
+      ['s1-system','s1-facility','s1-release','s1-release-county'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#8B1E35';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+    }
+    if (type === 'Referred by an Agency / Organization') {
+      ['s1-agency-name','s1-referral-method'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#8B1E35';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+    }
+    if (type === 'Veteran') {
+      const el = document.getElementById('s1-vet-housing');
+      if (!el.value.trim()) {
+        el.style.borderColor = '#8B1E35';
+        valid = false;
+      } else {
+        el.style.borderColor = '';
+      }
+    }
+
     if (!document.getElementById('s1-consent').checked) {
       document.getElementById('s1-consent').parentElement.style.borderColor = '#8B1E35';
       valid = false;
     } else {
       document.getElementById('s1-consent').parentElement.style.borderColor = '';
     }
+
     if (!valid) {
       alert('Please complete all required fields before continuing.');
       return;
@@ -680,18 +815,13 @@
     const services      = [...document.querySelectorAll('input[name="services"]:checked')].map(c => c.value).join(', ') || 'None selected';
     const resume        = document.querySelector('input[name="resume"]:checked')?.value || 'Not answered';
 
+    const regType   = currentRegType() || 'Not specified';
     const fname     = document.getElementById('s1-fname').value.trim();
     const lname     = document.getElementById('s1-lname').value.trim();
     const phone     = document.getElementById('s1-phone').value.trim();
     const email     = document.getElementById('s1-email').value.trim() || 'Not provided';
     const dob       = document.getElementById('s1-dob').value;
-    const county    = document.getElementById('s1-county').value.trim();
     const emergency = document.getElementById('s1-emergency').value.trim() || 'Not provided';
-    const system    = document.getElementById('s1-system').value;
-    const facility  = document.getElementById('s1-facility').value.trim();
-    const release   = document.getElementById('s1-release').value;
-    const tdcj      = document.getElementById('s1-tdcj').value.trim() || 'Not provided';
-    const population = document.getElementById('s1-population').value;
     const timeline  = document.getElementById('s1-timeline').value;
     const otherHousing = document.getElementById('s1-other-housing').value;
     const referral  = document.getElementById('s1-referral').value;
@@ -699,25 +829,54 @@
     const empInside = document.getElementById('s2-emp-inside').value || 'Not answered';
     const eduField  = document.getElementById('s2-edu-field').value.trim() || 'Not specified';
 
+    let incarcerationSection = 'Not applicable';
+    if (regType === 'Returning Citizen / Reentry') {
+      const system   = document.getElementById('s1-system').value;
+      const facility = document.getElementById('s1-facility').value.trim();
+      const release  = document.getElementById('s1-release').value;
+      const relCounty= document.getElementById('s1-release-county').value.trim();
+      const tdcj     = document.getElementById('s1-tdcj').value.trim() || 'Not provided';
+      incarcerationSection = `System: ${system}\nFacility: ${facility}\nExpected Release Date: ${release}\nCounty of Release: ${relCounty}\nTDCJ / Federal Register Number: ${tdcj}`;
+    }
+
+    let agencySection = 'Not applicable';
+    if (regType === 'Referred by an Agency / Organization') {
+      const agencyName   = document.getElementById('s1-agency-name').value.trim();
+      const referralMethod = document.getElementById('s1-referral-method').value || 'Not specified';
+      const agencyContact= document.getElementById('s1-agency-contact').value.trim() || 'Not provided';
+      const agencyInfo   = document.getElementById('s1-agency-contact-info').value.trim() || 'Not provided';
+      const agencyNotes  = document.getElementById('s1-agency-notes').value.trim() || 'None';
+      agencySection = `Agency/Organization: ${agencyName}\nHow Referred: ${referralMethod}\nAgency Contact: ${agencyContact}\nAgency Contact Info: ${agencyInfo}\nNotes: ${agencyNotes}`;
+    }
+
+    let vetHousingSection = 'Not applicable';
+    if (regType === 'Veteran') {
+      vetHousingSection = document.getElementById('s1-vet-housing').value || 'Not specified';
+    }
+
     const msgBody = `
 GRACE TRACE HOUSING REGISTRY — NEW REGISTRATION
+
+— REGISTRANT TYPE —
+${regType}
 
 — PERSONAL INFORMATION —
 Name: ${fname} ${lname}
 Phone: ${phone}
 Email: ${email}
 Date of Birth: ${dob}
-County of Release: ${county}
 Emergency Contact: ${emergency}
 
 — INCARCERATION DETAILS —
-System: ${system}
-Facility: ${facility}
-Expected Release Date: ${release}
-TDCJ / Federal Register Number: ${tdcj}
+${incarcerationSection}
+
+— AGENCY REFERRAL DETAILS —
+${agencySection}
+
+— VETERAN HOUSING PREFERENCE —
+${vetHousingSection}
 
 — HOUSING NEEDS —
-Population: ${population}
 Housing Timeline: ${timeline}
 Other Housing Option: ${otherHousing}
 Referred By: ${referral}
@@ -747,7 +906,7 @@ Acknowledged as Required: Yes
         from_name:  fname + ' ' + lname,
         from_email: email !== 'Not provided' ? email : 'info@gracetraceministries.org',
         phone:      phone,
-        subject:    'Housing Registry Registration — ' + fname + ' ' + lname + ' (' + population + ')',
+        subject:    'Housing Registry Registration — ' + fname + ' ' + lname + ' (' + regType + ')',
         message:    msgBody
       }).catch(err => console.error('EmailJS error:', err));
     }
@@ -759,7 +918,7 @@ Acknowledged as Required: Yes
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Checkbox visual feedback
+  // Checkbox / radio visual feedback
   document.addEventListener('change', function(e) {
     if (e.target.type === 'checkbox' && e.target.closest('.check-label')) {
       e.target.closest('.check-label').classList.toggle('selected', e.target.checked);
