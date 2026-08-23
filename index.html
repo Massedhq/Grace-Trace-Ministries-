@@ -46,6 +46,21 @@
   .nav-cta { background:var(--gold) !important; color:var(--black) !important; padding:10px 24px; font-weight:600 !important; transition:background 0.3s !important; }
   .nav-cta:hover { background:var(--gold-light) !important; }
 
+  /* NAV DROPDOWN — Services */
+  .nav-dropdown { position:relative; }
+  .nav-dropdown > a::after { content:' ▾'; font-size:9px; }
+  .dropdown-menu {
+    display:none; list-style:none; position:absolute; top:100%; left:0;
+    min-width:300px; background:#0D0D0D; border:1px solid rgba(201,151,28,0.2);
+    padding:10px 0; box-shadow:0 12px 28px rgba(0,0,0,0.45); z-index:50;
+  }
+  .nav-dropdown:hover .dropdown-menu, .nav-dropdown.open .dropdown-menu { display:block; }
+  .dropdown-menu li a {
+    display:block; padding:10px 20px; font-size:11px; font-weight:500;
+    letter-spacing:1px; text-transform:none; color:rgba(255,255,255,0.65);
+  }
+  .dropdown-menu li a:hover { color:var(--gold); background:rgba(201,151,28,0.08); }
+
   /* HERO */
   .hero {
     min-height:100vh; background:var(--black); position:relative;
@@ -270,6 +285,12 @@
     .hamburger.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
     .hamburger.open span:nth-child(2){ opacity:0; }
     .hamburger.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
+    .nav-dropdown > a::after { content:''; }
+    .dropdown-menu {
+      display:flex !important; position:static; flex-direction:column; align-items:center;
+      background:transparent; border:none; box-shadow:none; padding:12px 0 0; gap:12px;
+    }
+    .dropdown-menu li a { font-size:13px; padding:0; color:rgba(255,255,255,0.5); }
     .hero-content { grid-template-columns:1fr; padding:100px 20px 60px; gap:40px; }
     .about-section { grid-template-columns:1fr; padding:60px 20px; gap:40px; max-width:100vw; }
     .programs-inner, .serve-inner, .impact-inner, .involve-inner, .contact-inner { padding:0 20px; max-width:100vw; }
@@ -407,6 +428,13 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" onclick="closeNav()">About</a></li>
     <li><a href="#programs" onclick="closeNav()">Programs</a></li>
+    <li class="nav-dropdown" id="servicesDropdown">
+      <a href="services.html" onclick="closeNav()">Services</a>
+      <ul class="dropdown-menu">
+        <li><a href="services.html#substance-use-recovery" onclick="closeNav()">Substance Use Recovery & Treatment Coordination</a></li>
+        <li><a href="services.html" onclick="closeNav()">View Full Service Menu →</a></li>
+      </ul>
+    </li>
     <li><a href="#serve" onclick="closeNav()">Who We Serve</a></li>
     <li><a href="#impact" onclick="closeNav()">Impact</a></li>
     <li><a href="leadership.html" onclick="closeNav()">Our Leadership</a></li>
@@ -675,6 +703,7 @@
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
     <li><a href="#programs">Programs</a></li>
+    <li><a href="services.html">Services</a></li>
     <li><a href="#serve">Who We Serve</a></li>
     <li><a href="leadership.html">Our Leadership</a></li>
     <li><a href="resources.html">Resources</a></li>
@@ -695,6 +724,21 @@
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
   }
+
+  // Services dropdown — tap-to-toggle for touch devices, hover still works on desktop
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('servicesDropdown');
+    const trigger = dropdown.querySelector('a');
+    trigger.addEventListener('click', function(e) {
+      if (window.matchMedia('(hover: none)').matches && window.innerWidth > 900) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+    });
+  });
 
   const EJS_SERVICE  = 'service_h1li9si';
   const EJS_TEMPLATE = 'template_zzjc7ka';
