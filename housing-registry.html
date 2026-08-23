@@ -319,6 +319,7 @@
           <option value="Veteran">Veteran</option>
           <option value="Young Adult / Transitioning Youth">Young Adult / Transitioning Youth</option>
           <option value="Individual with Disabilities (DBMD)">Individual with Disabilities (DBMD)</option>
+          <option value="Applying for a Loved One">I'm applying on behalf of a loved one</option>
           <option value="Referred by an Agency / Organization">Workforce Solutions, a caseworker, or another agency/nonprofit</option>
         </select>
       </div>
@@ -326,9 +327,50 @@
 
     <div id="step1-rest" style="display:none;">
 
+    <!-- LOVED ONE DETAILS — shown only for Applying for a Loved One -->
+    <div class="form-block" id="loved-one-block" style="display:none;">
+      <div class="form-block-title">About Your <em>Loved One</em></div>
+      <div class="form-block-sub">Tell us about the person you're registering on behalf of. Our team will follow up with you directly to gather any additional details.</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Loved One's First Name <span class="req">*</span></label>
+          <input type="text" id="lo-fname" placeholder="Their first name">
+        </div>
+        <div class="form-group">
+          <label>Loved One's Last Name <span class="req">*</span></label>
+          <input type="text" id="lo-lname" placeholder="Their last name">
+        </div>
+        <div class="form-group">
+          <label>Relationship to You <span class="req">*</span></label>
+          <input type="text" id="lo-relationship" placeholder="e.g. Son, Mother, Spouse, Friend">
+        </div>
+        <div class="form-group">
+          <label>Loved One's Phone Number</label>
+          <input type="tel" id="lo-phone" placeholder="(000) 000-0000">
+          <div class="optional-note">Optional — if known</div>
+        </div>
+        <div class="form-group full">
+          <label>Which best describes your loved one's situation? <span class="req">*</span></label>
+          <select id="lo-category">
+            <option value="">Select an option</option>
+            <option>Returning Citizen / Reentry</option>
+            <option>Veteran</option>
+            <option>Young Adult / Transitioning Youth</option>
+            <option>Individual with Disabilities (DBMD)</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Anything else we should know about their situation?</label>
+          <textarea id="lo-notes" placeholder="Tell us what you can about their timeline, location, or needs"></textarea>
+          <div class="optional-note">Optional</div>
+        </div>
+      </div>
+    </div>
+
     <div class="form-block">
       <div class="form-block-title">Personal <em>Information</em></div>
-      <div class="form-block-sub">Please provide your basic contact information. All information is kept confidential and used solely to connect you with housing resources.</div>
+      <div class="form-block-sub" id="personal-info-sub">Please provide your basic contact information. All information is kept confidential and used solely to connect you with housing resources.</div>
       <div class="form-grid">
         <div class="form-group">
           <label>First Name <span class="req">*</span></label>
