@@ -55,6 +55,7 @@
     padding:10px 0; box-shadow:0 12px 28px rgba(0,0,0,0.45); z-index:50;
   }
   .nav-dropdown:hover .dropdown-menu, .nav-dropdown.open .dropdown-menu { display:block; }
+  .nav-dropdown.open > a::after { content:' ▴'; }
   .dropdown-menu li a {
     display:block; padding:10px 20px; font-size:11px; font-weight:500;
     letter-spacing:1px; text-transform:none; color:rgba(255,255,255,0.65);
@@ -155,13 +156,15 @@
   .section-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,3.5vw,52px); font-weight:300; color:var(--burgundy); line-height:1.15; margin-bottom:12px; }
   .section-header h2 em { font-style:italic; color:var(--green-mid); }
   .section-header p { font-size:15px; font-weight:300; color:var(--gray); max-width:540px; line-height:1.8; }
-  .programs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; margin-top:60px; background:rgba(0,0,0,0.06); }
+  .programs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:60px; background:rgba(0,0,0,0.06); }
   .program-card { background:var(--white); padding:48px 40px; position:relative; overflow:hidden; transition:all 0.4s; cursor:pointer; }
   .program-card::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:3px; transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
   .program-card:nth-child(1)::after { background:var(--burgundy-light); }
   .program-card:nth-child(2)::after { background:var(--green-light); }
   .program-card:nth-child(3)::after { background:var(--gold); }
   .program-card:nth-child(4)::after { background:var(--burgundy-mid); }
+  .program-card:nth-child(5)::after { background:var(--green-mid); }
+  .program-card:nth-child(6)::after { background:var(--gold-light); }
   .program-card:hover::after { transform:scaleX(1); }
   .program-card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(74,14,26,0.1); }
   .program-num { position:absolute; top:24px; right:32px; font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300; color:rgba(0,0,0,0.04); line-height:1; }
@@ -273,6 +276,11 @@
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
 
+  /* TABLET */
+  @media (max-width:1100px) and (min-width:901px) {
+    .programs-grid { grid-template-columns:repeat(2,1fr); }
+  }
+
   /* RESPONSIVE */
   @media (max-width:900px) {
     *, *::before, *::after { max-width:100vw; }
@@ -285,11 +293,11 @@
     .hamburger.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
     .hamburger.open span:nth-child(2){ opacity:0; }
     .hamburger.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
-    .nav-dropdown > a::after { content:''; }
     .dropdown-menu {
-      display:flex !important; position:static; flex-direction:column; align-items:center;
-      background:transparent; border:none; box-shadow:none; padding:12px 0 0; gap:12px;
+      display:none; position:static; flex-direction:column; align-items:center;
+      background:transparent; border:none; box-shadow:none; padding:0; gap:0;
     }
+    .nav-dropdown.open .dropdown-menu { display:flex; padding:12px 0 0; gap:12px; }
     .dropdown-menu li a { font-size:13px; padding:0; color:rgba(255,255,255,0.5); }
     .hero-content { grid-template-columns:1fr; padding:100px 20px 60px; gap:40px; }
     .about-section { grid-template-columns:1fr; padding:60px 20px; gap:40px; max-width:100vw; }
@@ -464,7 +472,7 @@
     </div>
     <div class="hero-right">
       <div class="hero-stats">
-        <div class="stat"><div class="stat-number">4</div><div class="stat-label">Program Types</div></div>
+        <div class="stat"><div class="stat-number">6</div><div class="stat-label">Program Types</div></div>
         <div class="stat"><div class="stat-number">TX</div><div class="stat-label">State Licensed</div></div>
         <div class="stat"><div class="stat-number">501c3</div><div class="stat-label">Nonprofit</div></div>
       </div>
@@ -532,31 +540,43 @@
 <div class="programs-wrap" id="programs">
   <div class="programs-inner">
     <div class="section-header">
-      <div class="eyebrow">Our Programs</div>
-      <h2>Housing Solutions for<br><em>Every Need</em></h2>
-      <p>We operate specialized housing programs designed to meet the unique needs of each population we serve.</p>
+      <div class="eyebrow">Housing Programs</div>
+      <h2>Housing Pathways for<br><em>Every Need</em></h2>
+      <p>Grace Trace Ministries operates several housing pathways — from structured transitional support to fully independent living — each designed around the needs of the population it serves.</p>
     </div>
     <div class="programs-grid">
       <div class="program-card">
         <span class="program-num">01</span>
-        <span class="program-icon">🎖️</span>
-        <h3>Veterans Transitional Housing</h3>
-        <p>Safe, structured housing for veterans experiencing homelessness. We work directly with VA Medical Centers across Texas to provide immediate placement, case management, employment assistance, and a clear path to permanent housing stability.</p>
+        <span class="program-icon">🏡</span>
+        <h3>Transitional Housing</h3>
+        <p>Structured temporary housing with support toward stability and permanent housing.</p>
       </div>
       <div class="program-card">
         <span class="program-num">02</span>
-        <span class="program-icon">🔓</span>
-        <h3>Reentry Housing Program</h3>
-        <p>Transitional housing for individuals returning from incarceration. Our structured boarding homes provide accountability, drug testing, employment assistance, and life skills training to support successful reintegration into the community while providing a safe environment to thrive in.</p>
+        <span class="program-icon">🔑</span>
+        <h3>Independent Living</h3>
+        <p>Affordable housing for individuals capable of living independently who need a stable place to call home.</p>
       </div>
       <div class="program-card">
         <span class="program-num">03</span>
+        <span class="program-icon">🎖️</span>
+        <h3>Veterans Housing</h3>
+        <p>Housing pathways designed around the needs and available resources of veterans.</p>
+      </div>
+      <div class="program-card">
+        <span class="program-num">04</span>
+        <span class="program-icon">🔓</span>
+        <h3>Reentry Housing</h3>
+        <p>Pre-release and post-release housing pathways for returning citizens.</p>
+      </div>
+      <div class="program-card">
+        <span class="program-num">05</span>
         <span class="program-icon">👁️</span>
         <h3>DBMD Residential Care</h3>
         <p>Specialized residential care for deaf-blind individuals with multiple disabilities under the Texas Medicaid DBMD waiver. Our trained staff provide Intervener services, tactile communication support, and individualized care plans.</p>
       </div>
       <div class="program-card">
-        <span class="program-num">04</span>
+        <span class="program-num">06</span>
         <span class="program-icon">🏘️</span>
         <h3>Group Home & Assisted Living</h3>
         <p>Licensed group homes and assisted living facilities for elderly individuals and adults with intellectual and developmental disabilities. We provide 24-hour supervised care, personal support, and community integration services.</p>
@@ -723,6 +743,7 @@
   function closeNav() {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('servicesDropdown').classList.remove('open');
   }
 
   // Services dropdown — tap-to-toggle for touch devices, hover still works on desktop
@@ -730,7 +751,7 @@
     const dropdown = document.getElementById('servicesDropdown');
     const trigger = dropdown.querySelector('a');
     trigger.addEventListener('click', function(e) {
-      if (window.matchMedia('(hover: none)').matches && window.innerWidth > 900) {
+      if (window.matchMedia('(hover: none)').matches) {
         e.preventDefault();
         dropdown.classList.toggle('open');
       }
